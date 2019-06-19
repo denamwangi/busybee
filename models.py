@@ -15,6 +15,13 @@ class Goal(db.Model):
 	
 	def __repr__(self):
 		return '<id {}>'.format(self.id)
+	
+	def serialize(self):
+		return {
+			'id': self.id,
+			'description': self.description,
+			'tasks': [t.serialize() for t in self.tasks],
+		}
 
 
 class Task(db.Model):
@@ -32,3 +39,9 @@ class Task(db.Model):
 	
 	def __repr__(self):
 		return '<id {}>'.format(self.id)
+	
+	def serialize(self):
+		return {
+			'id': self.id,
+			'description': self.description
+		}
