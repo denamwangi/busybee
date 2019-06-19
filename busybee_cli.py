@@ -2,13 +2,13 @@ import click
 import requests
 
 
-GROUPS = ['group1', 'group2']
-TASKS = ['task 1', 'task 2', 'task 3']
-meh = {
-	'group1': ['task1','task2'],
-	'group2': ['task3'],
-	}
+class Config(object):
 
+	def __init__(self):
+		url = "http://127.0.0.1:5000/get_goals"
+		self.goals = requests.get(url).json()
+
+pass_config = click.make_pass_decorator(Config, ensure=True)
 
 @click.group()
 def cli():
@@ -26,11 +26,13 @@ def add_goal(goal):
 
 @cli.command()
 @click.option('--task', prompt='What did you just complete lovely?')
-def add_task(task):
+@pass_config
+def add_task(config, task):
 	'''This adds something you accomplished today'''
 	click.echo("Nice job on completing %s" % task)
-	for i, grp in enumerate(GROUPS):
-		click.echo("{} {}".format(i, grp))
+
+	for group in config.goals:
+		click.echo("{} {}".format(group['id'], group['description']))
 	goal_id = click.prompt('what goal should it go under?')	
 	click.echo('you picked %s' % goal_id)
 
@@ -39,9 +41,10 @@ def add_task(task):
 
 
 @cli.command()
-def list():
+@pass_config
+def list(config):
 	'''Shows a grouped list of what you've done'''
-	for group in meh:
-		click.echo(click.style(group, fg='magenta'))
-		for item in meh[group]:
-			click.echo('     %s' % item)
+	for group in config.goals:
+		click.echo(click.style(group['description'], fg='magenta'))
+		for item in group['tasks']:
+			click.echo('     %s' % item['description'])
