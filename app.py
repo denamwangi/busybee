@@ -2,6 +2,7 @@ import os
 
 from flask import Flask, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy.exc import IntegrityError
 
 import models
 
@@ -29,7 +30,7 @@ def add_goal():
 		db.session.commit()
 		return("Successfully added goal")
 	except Exception as e:
-		return str(e)
+		return 'bad request bruh', 400
 
 
 @app.route("/get_goals", methods=["GET"])
@@ -51,8 +52,8 @@ def add_task():
 		db.session.add(task)
 		db.session.commit()
 		return("Successfully added task")
-	except Exception as e:
-		return str(e)
+	except IntegrityError:
+		return 'Bad request bruh. Are you sure this goal exists?', 400
 
 
 if __name__ == "__main__":
