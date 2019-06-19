@@ -1,0 +1,22 @@
+alembic==1.0.10
+-e git+git@github.com:denamwangi/busybee.git@6463fa0d76e0d000c7db2ab83f56e5e5d1611198#egg=BusyBee
+Click==7.0
+Flask==1.0.3
+Flask-Migrate==2.5.2
+Flask-Script==2.0.6
+Flask-SQLAlchemy==2.4.0
+itsdangerous==1.1.0
+Jinja2==2.10.1
+Mako==1.0.12
+MarkupSafe==1.1.1
+pbr==5.2.0
+psycopg2-binary==2.8.3
+python-dateutil==2.8.0
+python-editor==1.0.4
+six==1.12.0
+SQLAlchemy==1.3.5
+stevedore==1.30.1
+virtualenv==16.6.0
+virtualenv-clone==0.5.3
+virtualenvwrapper==4.8.4
+Werkzeug==0.15.4
