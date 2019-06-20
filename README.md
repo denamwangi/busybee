@@ -1,5 +1,6 @@
-# Personal CLI based productivity tool to collect tasks accomplished each day 
+### This is a simple, light-weight CLI tool to help track goals and tasks accomplished each week.
 
 Uses
-- Click
-- PostgreSQL
+-Flask
+-Click
+-PostgreSQL
