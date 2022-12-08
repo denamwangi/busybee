@@ -2,7 +2,7 @@ alembic==1.0.10
 appnope==0.1.0
 backports.shutil-get-terminal-size==1.0.0
 -e git+git@github.com:denamwangi/busybee.git@0207af130aefd2c8465c12e702bdbb38c904c88e#egg=BusyBee
-certifi==2019.6.16
+certifi==2022.12.7
 chardet==3.0.4
 Click==7.0
 decorator==4.4.0
